@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Rahtaaa 💙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{
+background:linear-gradient(-45deg,#000,#021a35,#000,#032b55);
+background-size:400% 400%;
+animation:bg 15s ease infinite;
+color:white;overflow-x:hidden}
+@keyframes bg{
+0%{background-position:0 50%}
+50%{background-position:100% 50%}
+100%{background-position:0 50%}
+}
+#intro{position:fixed;inset:0;background:black;display:flex;justify-content:center;align-items:center;font-size:28px;z-index:9999}
+.heart{position:fixed;bottom:-10px;font-size:20px;color:#3ba4ff;animation:float 6s linear infinite}
+@keyframes float{to{transform:translateY(-110vh);opacity:0}}
+section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;opacity:0;transform:translateY(40px);transition:1s}
+.show{opacity:1;transform:translateY(0)}
+h1{font-size:42px;background:linear-gradient(45deg,#3ba4ff,#ff4da6);-webkit-background-clip:text;color:transparent}
+button{padding:15px 30px;border:none;border-radius:30px;font-size:18px;background:linear-gradient(45deg,#3ba4ff,#ff4da6);color:white;cursor:pointer;margin-top:20px}
+.player{position:fixed;bottom:15px;right:15px;background:#0a1f3f;padding:15px;border-radius:15px}
+.love{display:grid;grid-template-columns:repeat(5,70px);gap:10px;margin-top:20px}
+.love img{width:70px;height:70px;object-fit:cover;border-radius:15px}
+.slide{display:none}.active{display:block}
+.card{background:#0a1f3f;padding:25px;border-radius:20px;margin:10px}
+</style>
+</head>
+
+<body>
+
+<div id="intro">Loading surprise for Rahtaaa 💙</div>
+<script>setTimeout(()=>intro.remove(),2500)</script>
+
+<script>
+setInterval(()=>{
+let h=document.createElement("div")
+h.className="heart"
+h.innerHTML="💙"
+h.style.left=Math.random()*100+"vw"
+document.body.appendChild(h)
+setTimeout(()=>h.remove(),6000)
+},400)
+</script>
+
+<audio id="music" loop></audio>
+
+<script>
+const music=document.getElementById("music");
+const sectionMusic=["music1.mp3","music2.mp3","music3.mp3"];
+const sections=document.querySelectorAll("section");
+
+function playMusic(i){
+ if(music.src.includes(sectionMusic[i])) return;
+ music.src=sectionMusic[i];
+ music.volume=0.7;
+ music.play().catch(()=>{});
+}
+
+const observerMusic=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   const i=Array.from(sections).indexOf(entry.target);
+   if(i===0) playMusic(0);
+   else if(i===1) playMusic(1);
+   else playMusic(2);
+  }
+ });
+},{threshold:0.6});
+
+sections.forEach(sec=>observerMusic.observe(sec));
+</script>
+
+<div class="player">🎵 Now Playing</div>
+
+<section class="reveal">
+<h1>Happy Birthday Bubub 💙</h1>
+<p>30 April 2026 • 19 Years Old 🎂</p>
+<button onclick="alert('🎉');document.getElementById('msg').scrollIntoView({behavior:'smooth'})">Open Surprise ✨</button>
+</section>
+
+<section id="msg" class="reveal">
+<h1>For Rahtaaa 🤍</h1>
+<p style="max-width:700px;line-height:1.8">
+
+Happy 19th Birthday bubub 🤍🎂 <br><br>
+Hari ini kamu resmi 19 tahun. Kedengarannya cuma angka, tapi aku tau perjalanan kamu sampai di titik ini nggak selalu gampang. Makasih ya sudah kuat sejauh ini, sudah bertahan, sudah terus berusaha walaupun capek, walaupun kadang ragu sama diri sendiri.<br><br>
+
+Aku cuma mau bilang makasih karena kamu selalu kuat, selalu berusaha, dan selalu jalan terus walaupun capek. Aku bangga banget sama kamu 🤍<br><br>
+
+Sekarang kamu lagi di fase kerja, belajar hal baru, ketemu tantangan baru, dan mungkin kadang ngerasa dunia cepat banget jalannya. Tapi percaya deh, kamu lagi ada di jalur yang tepat. Pelan-pelan aja, step by step. You don’t have to rush, you just have to keep going.<br><br>
+
+Semoga kerja kamu selalu lancar, rezekinya makin luas, dan kamu selalu dikelilingi hal-hal baik. Kalau capek, ingat kamu nggak sendirian.<br><br>
+
+You are doing so well. I know life is not always easy, but you keep going and I'm really proud of you.<br><br>
+
+Semoga semua mimpi kamu pelan-pelan jadi nyata ✨  
+Semoga setiap hari kamu punya alasan untuk senyum 😊<br><br>
+
+Thank you for being you.  
+Thank you for existing in my life.<br><br>
+
+I hope this year brings you more happiness, success, and many beautiful moments.<br><br>
+
+Happy birthday once again 🥳  
+I’m always rooting for you 💙  
+I love you more than yesterday and less than tomorrow 💙
+
+</p>
+</section>
+
+<section class="reveal">
+<h1>Our Memories 📸</h1>
+<div class="love">
+<img src="foto1.jpg"><img src="foto2.jpg"><img src="foto3.jpg"><img src="foto4.jpg"><img src="foto5.jpg">
+<img src="foto6.jpg"><img src="foto7.jpg"><img src="foto8.jpg"><img src="foto9.jpg"><img src="foto10.jpg">
+<img src="foto11.jpg"><img src="foto12.jpg"><img src="foto13.jpg"><img src="foto14.jpg"><img src="foto15.jpg">
+<img src="foto16.jpg"><img src="foto17.jpg"><img src="foto18.jpg"><img src="foto19.jpg"><img src="foto20.jpg">
+</div>
+</section>
+
+<section class="reveal">
+<h1>Our Love Wrapped 🎧</h1>
+<div class="card slide active">Days Together 💙<h1>365+</h1></div>
+<div class="card slide">Laughs Shared 😂<h1>∞</h1></div>
+<div class="card slide">Love Level 💙<h1>1000%</h1></div>
+</section>
+
+<section class="reveal">
+<h1>Thank you for existing 💙</h1>
+<p>– Nafiis</p>
+</section>
+
+<script>
+let obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("show")))
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el))
+let slides=document.querySelectorAll(".slide"),s=0
+setInterval(()=>{slides[s].classList.remove("active");s=(s+1)%slides.length;slides[s].classList.add("active")},3000)
+</script>
+
+</body>
+</html>
