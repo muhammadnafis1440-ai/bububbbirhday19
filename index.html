@@ -35,8 +35,12 @@ button{padding:15px 30px;border:none;border-radius:30px;font-size:18px;backgroun
 </head>
 
 <body>
-
-<div id="intro">Loading surprise for Rahtaaa 💙</div>
+<div id="overlayStart" onclick="startWebsite()">
+  <div class="startBox">
+      <h1>Tap to start 💙</h1>
+      <p>special birthday website for bubub ✨</p>
+  </div>
+</div>
 <script>setTimeout(()=>intro.remove(),2500)</script>
 
 <script>
@@ -143,6 +147,17 @@ let obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.clas
 document.querySelectorAll(".reveal").forEach(el=>obs.observe(el))
 let slides=document.querySelectorAll(".slide"),s=0
 setInterval(()=>{slides[s].classList.remove("active");s=(s+1)%slides.length;slides[s].classList.add("active")},3000)
+</script>
+
+<!-- TEMPEL DI SINI -->
+<audio id="music" loop>
+  <source src="music1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+window.addEventListener("click", function(){
+  document.getElementById("music").play();
+},{ once:true });
 </script>
 
 </body>
