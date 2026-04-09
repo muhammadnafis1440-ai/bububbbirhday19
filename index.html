@@ -14,143 +14,96 @@ background:linear-gradient(-45deg,#000,#021a35,#000,#032b55);
 background-size:400% 400%;
 animation:bg 15s ease infinite;
 color:white;overflow-x:hidden}
-@keyframes bg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-
-#overlayStart{
- position:fixed; inset:0; background:black;
- display:flex; justify-content:center; align-items:center;
- z-index:9999; text-align:center
+@keyframes bg{
+0%{background-position:0 50%}
+50%{background-position:100% 50%}
+100%{background-position:0 50%}
 }
-
 section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;opacity:0;transform:translateY(40px);transition:1s}
 .show{opacity:1;transform:translateY(0)}
-
 h1{font-size:42px;background:linear-gradient(45deg,#3ba4ff,#ff4da6);-webkit-background-clip:text;color:transparent}
 button{padding:15px 30px;border:none;border-radius:30px;font-size:18px;background:linear-gradient(45deg,#3ba4ff,#ff4da6);color:white;cursor:pointer;margin-top:20px}
 
+/* floating heart */
 .heart{position:fixed;bottom:-10px;font-size:20px;color:#3ba4ff;animation:float 6s linear infinite}
 @keyframes float{to{transform:translateY(-110vh);opacity:0}}
 
-.love{display:grid;grid-template-columns:repeat(5,70px);gap:10px;margin-top:20px}
-.love img{width:70px;height:70px;object-fit:cover;border-radius:15px}
+/* PLAYER */
+.player{position:fixed;bottom:15px;right:15px;background:#0a1f3f;padding:15px;border-radius:15px}
 
-.slide{display:none}.active{display:block}
-.card{background:#0a1f3f;padding:25px;border-radius:20px;margin:10px}
+/* LOVE WRAPPED */
+.card{background:#0a1f3f;padding:25px;border-radius:20px;margin:10px;box-shadow:0 0 20px rgba(0,170,255,.4);animation:cardPop 1s infinite alternate}
+@keyframes cardPop{from{transform:scale(1)}to{transform:scale(1.05)}}
+
+/* ===== MEMORY LOVE GRID ===== */
+.memory-section{padding:100px 20px;text-align:center;}
+.love-grid{margin-top:50px;display:grid;grid-template-columns:repeat(7,90px);grid-template-rows:repeat(6,90px);justify-content:center;gap:12px;}
+.mem{width:90px;height:90px;object-fit:cover;border-radius:18px;opacity:0;transform:scale(.3) rotate(-30deg);transition:1s;box-shadow:0 0 15px rgba(0,170,255,.4);}
+.mem1{grid-area:1/2;} .mem2{grid-area:2/1;} .mem3{grid-area:3/1;}
+.mem4{grid-area:1/5;} .mem5{grid-area:2/6;} .mem6{grid-area:3/6;}
+.mem7{grid-area:4/2;} .mem8{grid-area:5/3;} .mem9{grid-area:4/5;}
+.showPhoto{opacity:1;transform:scale(1) rotate(0deg);}
 </style>
 </head>
 
 <body>
 
-<div id="overlayStart" onclick="startWebsite()">
-  <div>
-      <h1>Tap to start 💙</h1>
-      <p>special birthday website for bubub ✨</p>
-  </div>
-</div>
-
+<div class="player">🎵 Now Playing</div>
 <audio id="music" loop></audio>
 
-<script>
-const music=document.getElementById("music");
-const sectionMusic=["music1.mp3","music2.mp3","music3.mp3"];
-const sections=document.querySelectorAll("section");
-
-function startWebsite(){
-  document.getElementById("overlayStart").style.display="none";
-  music.src=sectionMusic[0];
-  music.volume=0.7;
-  music.play().catch(()=>{});
-}
-
-function playMusic(i){
- if(music.src.includes(sectionMusic[i])) return;
- music.src=sectionMusic[i];
- music.play().catch(()=>{});
-}
-
-const observerMusic=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   const i=Array.from(sections).indexOf(entry.target);
-   if(i===0) playMusic(0);
-   else if(i===1) playMusic(1);
-   else playMusic(2);
-  }
- });
-},{threshold:0.6});
-</script>
-
-<script>
-setInterval(()=>{
-let h=document.createElement("div")
-h.className="heart"
-h.innerHTML="💙"
-h.style.left=Math.random()*100+"vw"
-document.body.appendChild(h)
-setTimeout(()=>h.remove(),6000)
-},400)
-</script>
-
+<!-- SECTION 1 -->
 <section class="reveal">
 <h1>Happy Birthday Bubub 💙</h1>
 <p>30 April 2026 • 19 Years Old 🎂</p>
 <button onclick="document.getElementById('msg').scrollIntoView({behavior:'smooth'})">Open Surprise ✨</button>
 </section>
 
+<!-- SECTION 2 -->
 <section id="msg" class="reveal">
 <h1>For Rahtaaa 🤍</h1>
 <p style="max-width:700px;line-height:1.8">
-
-Happy 19th Birthday bubub 🤍🎂  
-Hari ini kamu resmi 19 tahun. Kedengarannya cuma angka, tapi aku tau perjalanan kamu sampai di titik ini nggak selalu gampang. Makasih ya sudah kuat sejauh ini, sudah bertahan, sudah terus berusaha walaupun capek, walaupun kadang ragu sama diri sendiri.
-<br><br>
+Happy 19th Birthday bubub 🤍🎂 Hari ini kamu resmi 19 tahun. Kedengarannya cuma angka, tapi aku tau perjalanan kamu sampai di titik ini nggak selalu gampang. Makasih ya sudah kuat sejauh ini, sudah bertahan, sudah terus berusaha walaupun capek, walaupun kadang ragu sama diri sendiri.
 
 Aku cuma mau bilang makasih karena kamu selalu kuat, selalu berusaha, dan selalu jalan terus walaupun capek. Aku bangga banget sama kamu 🤍
-<br><br>
 
 Sekarang kamu lagi di fase kerja, belajar hal baru, ketemu tantangan baru, dan mungkin kadang ngerasa dunia cepat banget jalannya. Tapi percaya deh, kamu lagi ada di jalur yang tepat. Pelan-pelan aja, step by step. You don’t have to rush, you just have to keep going.
-<br><br>
 
 Semoga kerja kamu selalu lancar, rezekinya makin luas, dan kamu selalu dikelilingi hal-hal baik. Kalau capek, ingat kamu nggak sendirian.
-<br><br>
 
 You are doing so well. I know life is not always easy, but you keep going and I'm really proud of you.
-<br><br>
 
-Semoga semua mimpi kamu pelan-pelan jadi nyata ✨  
-Semoga setiap hari kamu punya alasan untuk senyum 😊
-<br><br>
+Semoga semua mimpi kamu pelan-pelan jadi nyata ✨ Semoga setiap hari kamu punya alasan untuk senyum 😊
 
-Thank you for being you.  
-Thank you for existing in my life.
-<br><br>
+Thank you for being you. Thank you for existing in my life.
 
 I hope this year brings you more happiness, success, and many beautiful moments.
-<br><br>
 
-Happy birthday once again 🥳  
-I’m always rooting for you 💙  
-I love you more than yesterday and less than tomorrow 💙
-
-</p>
+Happy birthday once again 🥳 I’m always rooting for you 💙 I love you more than yesterday and less than tomorrow 💙
 </p>
 </section>
 
-<section class="reveal">
+<!-- MEMORY LOVE -->
+<section class="memory-section reveal">
 <h1>Our Memories 📸</h1>
-<div class="love">
-<img src="foto1.jpg"><img src="foto2.jpg"><img src="foto3.jpg"><img src="foto4.jpg"><img src="foto5.jpg">
-<img src="foto6.jpg"><img src="foto7.jpg"><img src="foto8.jpg"><img src="foto9.jpg"><img src="foto10.jpg">
-<img src="foto11.jpg"><img src="foto12.jpg"><img src="foto13.jpg"><img src="foto14.jpg"><img src="foto15.jpg">
-<img src="foto16.jpg"><img src="foto17.jpg"><img src="foto18.jpg"><img src="foto19.jpg"><img src="foto20.jpg">
+<div class="love-grid">
+<img src="img/1.jpg" class="mem mem1">
+<img src="img/2.jpg" class="mem mem2">
+<img src="img/3.jpg" class="mem mem3">
+<img src="img/4.jpg" class="mem mem4">
+<img src="img/5.jpg" class="mem mem5">
+<img src="img/6.jpg" class="mem mem6">
+<img src="img/7.jpg" class="mem mem7">
+<img src="img/8.jpg" class="mem mem8">
+<img src="img/9.jpg" class="mem mem9">
 </div>
 </section>
 
+<!-- LOVE WRAPPED -->
 <section class="reveal">
 <h1>Our Love Wrapped 🎧</h1>
-<div class="card slide active">Days Together 💙<h1>365+</h1></div>
-<div class="card slide">Laughs Shared 😂<h1>∞</h1></div>
-<div class="card slide">Love Level 💙<h1>1000%</h1></div>
+<div class="card">Days Together 💙<h1>365+</h1></div>
+<div class="card">Laughs Shared 😂<h1>∞</h1></div>
+<div class="card">Love Level 💙<h1>1000%</h1></div>
 </section>
 
 <section class="reveal">
@@ -159,11 +112,42 @@ I love you more than yesterday and less than tomorrow 💙
 </section>
 
 <script>
-document.querySelectorAll("section").forEach(sec=>observerMusic.observe(sec))
+/* floating hearts */
+setInterval(()=>{
+let h=document.createElement("div")
+h.className="heart"
+h.innerHTML="💙"
+h.style.left=Math.random()*100+"vw"
+document.body.appendChild(h)
+setTimeout(()=>h.remove(),6000)
+},400)
+
+/* reveal scroll */
 let obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("show")))
 document.querySelectorAll(".reveal").forEach(el=>obs.observe(el))
-let slides=document.querySelectorAll(".slide"),s=0
-setInterval(()=>{slides[s].classList.remove("active");s=(s+1)%slides.length;slides[s].classList.add("active")},3000)
+
+/* MUSIC PER SECTION */
+const music=document.getElementById("music");
+const sectionMusic=["music1.mp3","music2.mp3","music3.mp3"];
+const sections=document.querySelectorAll("section");
+const observerMusic=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+const i=[...sections].indexOf(entry.target);
+music.src=sectionMusic[i]||sectionMusic[2];
+music.volume=.7;
+music.play().catch(()=>{});
+}});
+},{threshold:.6});
+sections.forEach(sec=>observerMusic.observe(sec));
+
+/* memory animation */
+const photos=document.querySelectorAll(".mem");
+let delay=0;
+photos.forEach(photo=>{
+setTimeout(()=>photo.classList.add("showPhoto"),delay);
+delay+=700;
+});
 </script>
 
 </body>
