@@ -1,100 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday 💙</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<title>For Rahtaaa 💙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
 body{
-  font-family:Poppins;
-  background:linear-gradient(120deg,#0f2a44,#1e4e79);
-  color:white;
-  overflow-x:hidden;
-}
-section{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:30px;
-}
-audio{display:none}
-
-/* KERTAS PUTIH */
-.letter{
-  background:#ffffff;
-  color:#333;
-  max-width:750px;
-  padding:40px;
-  border-radius:12px;
-  box-shadow:0 0 40px rgba(0,0,0,.3);
-  font-family:'Playfair Display';
-  line-height:1.9;
+background:linear-gradient(-45deg,#000,#021a35,#000,#032b55);
+background-size:400% 400%;
+animation:bg 15s infinite;
+color:white;overflow-x:hidden}
+@keyframes bg{
+0%{background-position:0 50%}
+50%{background-position:100% 50%}
+100%{background-position:0 50%}
 }
 
-.typing span{
-  opacity:0;
-  animation:show 0.05s forwards;
-}
-@keyframes show{to{opacity:1}}
+/* INTRO */
+#overlayStart{
+position:fixed;inset:0;background:#000;
+display:flex;justify-content:center;align-items:center;
+z-index:9999;text-align:center;cursor:pointer}
+.startBox h1{font-size:38px}
+.startBox p{opacity:.7}
 
-/* LOVE PATTERN LEBIH BESAR */
-.heart-grid{
-  display:grid;
-  grid-template-columns:repeat(9,95px);
-  gap:12px;
-  margin-top:40px;
+/* HEART */
+.heart{position:fixed;bottom:-10px;font-size:20px;color:#3ba4ff;animation:float 6s linear infinite}
+@keyframes float{to{transform:translateY(-110vh);opacity:0}}
+
+section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;opacity:0;transform:translateY(40px);transition:1s}
+.show{opacity:1;transform:translateY(0)}
+
+h1{font-size:42px;background:linear-gradient(45deg,#3ba4ff,#ff4da6);-webkit-background-clip:text;color:transparent}
+button{padding:15px 30px;border:none;border-radius:30px;font-size:18px;background:linear-gradient(45deg,#3ba4ff,#ff4da6);color:white;cursor:pointer;margin-top:20px}
+
+.player{position:fixed;bottom:15px;right:15px;background:#0a1f3f;padding:15px;border-radius:15px}
+
+/* ===== LETTER ===== */
+.letter-section{
+background:radial-gradient(circle at 20% 20%, rgba(0,150,255,.25), transparent 40%),
+radial-gradient(circle at 80% 30%, rgba(255,77,166,.15), transparent 40%),
+linear-gradient(180deg,#021a35,#000);
 }
-.heart-grid img{
-  width:95px;height:95px;
-  object-fit:cover;
-  border-radius:18px;
-  opacity:0;
-  transform:scale(.3);
-  transition:1.5s;
-}
-.heart-grid img.show{
-  opacity:1;
-  transform:scale(1);
-}
+.paper{
+max-width:780px;padding:60px;border-radius:25px;
+background:linear-gradient(#fff,#f6fbff);
+color:#111;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.paper h1{font-family:'Great Vibes';font-size:48px;color:#0b3b78}
+.letter-text{font-family:'Playfair Display';line-height:2;white-space:pre-wrap}
+
+/* ===== FOTO LOVE ===== */
+.gallery{display:grid;grid-template-columns:repeat(5,70px);gap:12px;margin-top:30px}
+.gallery img{
+width:70px;height:70px;object-fit:cover;border-radius:15px;
+opacity:0;transform:scale(.5);transition:.6s}
+.gallery img.show{opacity:1;transform:scale(1)}
+
+/* WRAPPED */
+.card{background:#0a1f3f;padding:25px;border-radius:20px;margin:10px}
+.slide{display:none}.active{display:block}
 </style>
 </head>
 
 <body>
 
-<audio id="music1" src="music/music1.mp3" loop></audio>
-<audio id="music2" src="music/music2.mp3" loop></audio>
-<audio id="music3" src="music/music3.mp3"></audio>
-
-<section onclick="startMusic()">
+<div id="overlayStart" onclick="startWebsite()">
+<div class="startBox">
 <h1>Tap to start 💙</h1>
 <p>special birthday website for bubub ✨</p>
+</div>
+</div>
+
+<audio id="music"></audio>
+
+<section class="reveal">
+<h1>Happy Birthday Bubub 💙</h1>
+<p>30 April 2026 • 19 Years Old 🎂</p>
+<button onclick="document.getElementById('msg').scrollIntoView({behavior:'smooth'})">Open Surprise ✨</button>
 </section>
 
-<section>
-<div class="letter typing" id="text"></div>
-</section>
-
-<section>
-<h1>Our Memories 📸</h1>
-<div class="heart-grid" id="heart">
-<img src="photo/1.jpg"><img src="photo/2.jpg"><img src="photo/3.jpg">
-<img src="photo/4.jpg"><img src="photo/5.jpg"><img src="photo/6.jpg">
-<img src="photo/7.jpg"><img src="photo/8.jpg"><img src="photo/9.jpg">
-<img src="photo/10.jpg"><img src="photo/11.jpg"><img src="photo/12.jpg">
-<img src="photo/13.jpg"><img src="photo/14.jpg"><img src="photo/15.jpg">
+<section id="msg" class="letter-section reveal">
+<div class="paper">
+<h1>For Rahtaaa 🤍</h1>
+<div class="letter-text" id="typingText"></div>
 </div>
 </section>
 
+<section class="reveal">
+<h1>Our Memories 📸</h1>
+<div class="gallery" id="gallery"></div>
+</section>
+
+<section class="reveal">
+<h1>Our Love Wrapped 🎧</h1>
+<div class="card slide active">Days Together 💙<h1>365+</h1></div>
+<div class="card slide">Laughs Shared 😂<h1>∞</h1></div>
+<div class="card slide">Love Level 💙<h1>1000%</h1></div>
+</section>
+
+<section class="reveal">
+<h1>Thank you for existing 💙</h1>
+<p>– Nafiis</p>
+</section>
+
 <script>
-/* TEXT TIDAK DIUBAH */
-const text=`Happy 19th Birthday bubub 🤍🎂  Hari ini kamu resmi 19 tahun. Kedengarannya cuma angka, tapi aku tau perjalanan kamu sampai di titik ini nggak selalu gampang. Makasih ya sudah kuat sejauh ini, sudah bertahan, sudah terus berusaha walaupun capek, walaupun kadang ragu sama diri sendiri.
+/* START WEBSITE */
+const music=document.getElementById("music");
+function startWebsite(){
+document.getElementById("overlayStart").style.display="none";
+music.src="music1.mp3";music.play();
+}
+
+/* MUSIC PER SECTION */
+const musics=["music1.mp3","music2.mp3","music3.mp3"];
+const sections=document.querySelectorAll("section");
+const obsMusic=new IntersectionObserver(e=>{
+e.forEach(x=>{
+if(x.isIntersecting){
+let i=[...sections].indexOf(x.target);
+music.src=musics[i>=2?2:i];
+music.play();
+}});
+},{threshold:.6});
+sections.forEach(sec=>obsMusic.observe(sec));
+
+/* HEART */
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";h.innerHTML="💙";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+},400);
+
+/* REVEAL */
+let obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("show")));
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+
+/* TYPEWRITER */
+const msg=`Happy 19th Birthday bubub 🤍🎂 Hari ini kamu resmi 19 tahun. Kedengarannya cuma angka, tapi aku tau perjalanan kamu sampai di titik ini nggak selalu gampang. Makasih ya sudah kuat sejauh ini, sudah bertahan, sudah terus berusaha walaupun capek, walaupun kadang ragu sama diri sendiri.
 
 Aku cuma mau bilang makasih karena kamu selalu kuat, selalu berusaha, dan selalu jalan terus walaupun capek. Aku bangga banget sama kamu 🤍
 
@@ -112,38 +161,20 @@ I hope this year brings you more happiness, success, and many beautiful moments.
 
 Happy birthday once again 🥳 I’m always rooting for you 💙 I love you more than yesterday and less than tomorrow 💙`;
 
-let i=0;
-function type(){
- if(i<text.length){
-  document.getElementById("text").innerHTML+=`<span style="animation-delay:${i*0.03}s">${text[i]}</span>`;
-  i++;
-  setTimeout(type,30);
- }
-}
-type();
+let i=0;function type(){if(i<msg.length){typingText.innerHTML+=msg.charAt(i);i++;setTimeout(type,35)}}setTimeout(type,1500);
 
-/* MUSIC — HANYA MUSIC3 YANG TIDAK RESTART */
-function startMusic(){
-  music1.play();
+/* FOTO AUTO LOAD FIX */
+const gallery=document.getElementById("gallery");
+for(let i=1;i<=20;i++){
+let img=document.createElement("img");
+img.src="foto/foto"+i+".jpg";
+gallery.appendChild(img);
+setTimeout(()=>img.classList.add("show"),i*300);
 }
 
-/* play music3 sekali saat masuk memory */
-let played=false;
-window.addEventListener("scroll",()=>{
-  const mem=document.getElementById("heart").getBoundingClientRect().top;
-  if(mem<window.innerHeight && !played){
-    music3.play();
-    played=true;
-  }
-});
-
-/* FOTO MUNCUL 1 PER 1 ±30 DETIK */
-const photos=document.querySelectorAll("#heart img");
-let delay=0;
-photos.forEach(img=>{
-  setTimeout(()=>img.classList.add("show"),delay);
-  delay+=2000;
-});
+/* WRAPPED SLIDE */
+let slides=document.querySelectorAll(".slide"),s=0;
+setInterval(()=>{slides[s].classList.remove("active");s=(s+1)%slides.length;slides[s].classList.add("active")},3000);
 </script>
 
 </body>
