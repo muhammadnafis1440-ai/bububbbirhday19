@@ -113,10 +113,41 @@ box-shadow:0 0 8px rgba(255,0,90,.4);
 </section>
 
 <script>
-const music=document.getElementById("music");
-let currentTrack="";
-function playMusic(src){if(currentTrack===src)return;currentTrack=src;music.src=src;music.play();}
-function startWebsite(){document.getElementById("overlayStart").style.display="none";playMusic("music1.mp3");}
+/* ===== ULTRA MUSIC FIX (ANTI STUCK) ===== */
+const music = document.getElementById("music");
+let currentTrack = "";
+let audioUnlocked = false;
+
+// unlock audio setelah user tap pertama
+document.body.addEventListener("click", () => {
+  if(audioUnlocked) return;
+  music.volume = 0;
+  music.play().then(()=>{
+    music.pause();
+    music.currentTime = 0;
+    music.volume = 1;
+    audioUnlocked = true;
+    console.log("Audio unlocked 🔓");
+  }).catch(()=>{});
+},{once:true});
+
+function playMusic(src){
+  if(currentTrack === src) return;
+  currentTrack = src;
+
+  music.src = src;
+  music.load();
+
+  const playPromise = music.play();
+  if(playPromise !== undefined){
+    playPromise.catch(()=>console.log("Autoplay blocked, waiting user interaction"));
+  }
+}
+
+function startWebsite(){
+  document.getElementById("overlayStart").style.display = "none";
+  setTimeout(()=>playMusic("music1.mp3"),300);
+}
 
 const sections=document.querySelectorAll("section");
 let memoryMusicStarted=false;
