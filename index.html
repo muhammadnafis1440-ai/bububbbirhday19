@@ -198,9 +198,14 @@ setTimeout(typeWriter,1200);
 
 /* LOVE SHAPE RANDOM FILL */
 const memorySection=document.querySelector(".love");
-const TOTAL_PHOTO=20;
-function randomPhoto(){return Math.floor(Math.random()*TOTAL_PHOTO)+1;}
 
+/* jumlah total foto */
+const TOTAL_PHOTO = 60;
+
+/* random foto dari 1 - 60 */
+function randomPhoto(){
+  return Math.floor(Math.random() * TOTAL_PHOTO) + 1;
+}
 const heartMap=[
 "00111110001111100",
 "01111111011111110",
